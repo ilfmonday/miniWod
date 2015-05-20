@@ -29,7 +29,7 @@ def fetchAllIndexHTML(rootDir, targetList):
             targetList.append(path)
     return
 
-
+## 这个函数除了替换相对链接外，还替换了默认皮肤
 def editDetailHtmlLinkRelations(rootDir):
     list_dirs = os.walk(rootDir)
     oldStr = "document.location.href='../index.html'"
@@ -42,14 +42,14 @@ def editDetailHtmlLinkRelations(rootDir):
             if fPath.endswith('html'):
                 targetF = open(fPath, "r+w")
                 contentStr = "".join(targetF.readlines())
+		contentStr = re.sub(r'skin-[0-9]+', 'skin-3', contentStr) ##皮肤替换
                 if contentStr.find(oldStr) > 0:
                     contentStr = contentStr.replace(oldStr, newStr)
-                    targetF.seek(0, 0)
-                    targetF.write(contentStr)
 
+             	targetF.seek(0, 0)
+              	targetF.write(contentStr)
                 targetF.close()
     return
-
 
 # 1 找到文件中的<tr>标签，其内部为战报的索引，返回类型为bs4.element.Tag的list
 def findTrTag(fName):
