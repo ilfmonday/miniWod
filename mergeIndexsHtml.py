@@ -141,6 +141,9 @@ for i in range(len(tagStrs)):
     print strI.find(row1)
     strI = strI.replace(row0, rowI + str(numSuffix)+'"')
     strI = strI.replace(row1, rowI + str(numSuffix)+'"')
+
+    strI = strI.decode("unicode_escape").encode("UTF-8") # by 王硕 环境编码问题！！！
+
     tagStrs[i] = strI
     print tagStrs[i]
 
