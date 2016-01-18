@@ -126,7 +126,7 @@ for indexI in indexNames:
         addParentDirPath2OnclickAttri(tagI, indexI)
         tagStrI = converTag2StringAndRemoveInputSuffix(tagI)
 
-        tagStrI = tagStrI.decode("unicode_escape").encode("UTF-8") # by 王硕 环境编码问题！！！
+        # tagStrI = tagStrI.decode("unicode_escape").encode("UTF-8") # by 王硕 环境编码问题！！！
 
         tagStrs.append(tagStrI)
 
